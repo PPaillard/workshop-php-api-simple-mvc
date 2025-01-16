@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="fr" class="translated-ltr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>API Client / Serveur | Wild Code School</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/syntax_monokai.css" />
+
+        <link rel="stylesheet" href="assets/css/tic-tac.css" />
+        <script src="assets/js/wrappTicTac.js" type="module"></script>
+    </head>
+    <body class="">
+        <header>
+            <div>
+                <h1>API Client / Serveur</h1>
+
+                <p>Exposer et consommer une API dans un projet PHP MVC</p>
+            </div>
+        </header>
+
+        <main id="main">
+            <img
+                class="main-image"
+                src="assets/img/biznutz.png"
+                alt="API Client / Serveur"
+            />
+
+            <div class="widget-clone">
+                <label for="input-clone"
+                    ><i class="bi bi-code-slash"></i
+                    ><font style="vertical-align: inherit"
+                        ><font style="vertical-align: inherit">Code</font></font
+                    ></label
+                >
+                <div class="input-group">
+                    <input
+                        type="text"
+                        readonly=""
+                        value="git clone https://github.com/PPaillard/workshop-php-api-simple-mvc"
+                        id="input-clone"
+                    />
+                    <button
+                        id="copy-button"
+                        class="copy-button"
+                        aria-label="Copier dans le presse-papier"
+                    >
+                        <span class="icon-copy">
+                            <i class="bi-clipboard"></i>
+                        </span>
+                        <span class="icon-check"
+                            ><font style="vertical-align: inherit"
+                                ><font style="vertical-align: inherit">
+                                    Copié
+                                </font></font
+                            ><i class="bi-check-lg"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="text-end">
+                    <a
+                        href="https://github.com/PPaillard/workshop-php-api-simple-mvc"
+                        target="_blank"
+                    >
+                        <small
+                            ><font style="vertical-align: inherit"
+                                ><font style="vertical-align: inherit"
+                                    >https://github.com/PPaillard/workshop-php-api-simple-mvc</font
+                                ></font
+                            ><i class="bi bi-box-arrow-up-right"></i
+                        ></small>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wrapper-tic-tac">
+                <section class="no-background">
+                    <h1 id="tic--tac--biznutz">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >TIC &amp; TAC : BIZNUTZ</font
+                            ></font
+                        >
+                    </h1>
+                    <p>
+                        Tic &amp; Tac ont bien réfléchi dernièrement et ont
+                        décidé de se lancer ensemble dans une nouvelle aventure
+                        : <strong>BizNutz</strong>.
+                    </p>
+                    <p>
+                        Après une cueillette fructueuse cette année, ils ont
+                        décidé d’ouvrir un commerce en ligne pour revendre leur
+                        stock en trop de noisettes aux locataires des forêts
+                        voisines.
+                    </p>
+                    <p>
+                        Pour mener à bien leur projet, ils lancent une
+                        plateforme de e-commerce et se répartissent les tâches.
+                        <strong>Tac</strong> s’occupe de l’application de
+                        gestion du stock et <strong>Tic</strong> s’occupe, quant
+                        à lui, du site marchand.
+                    </p>
+                    <p class="text-center">
+                        <img
+                            src="assets/img/1943-tic-tac-17.jpg"
+                            alt="tic tac"
+                        />
+                    </p>
+                    <p>
+                        En équipe de 2 développeurs, suivez les consignes en
+                        choisissant chacun votre rôle !<br />
+                        Colonne de gauche, Tic et colonne de droite Tac.
+                    </p>
+                    <p class="alert-info">
+                        Clonez ce dépôt grâce au lien donné ci-dessus ⬆
+                        <a href="#input-clone"
+                            ><i class="bi bi-code-slash"></i
+                            ><font style="vertical-align: inherit"
+                                ><font style="vertical-align: inherit"
+                                    >&nbsp;Code</font
+                                ></font
+                            ></a
+                        ><font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit">
+                                .</font
+                            ></font
+                        >
+                    </p>
+                    <p>Effectuez ensuite les tâches suivantes :</p>
+                    <ul>
+                        <li>
+                            <code class="language-plaintext highlighter-rouge"
+                                >cd workshop-php-api-simple-mvc</code
+                            >
+                        </li>
+                        <li>
+                            <code class="language-plaintext highlighter-rouge"
+                                >composer install</code
+                            >
+                        </li>
+                        <li>
+                            Créer le fichier <strong>db.php</strong> à partir du
+                            fichier <strong>db.php.dist</strong> avec les
+                            identifiants de connexion pour PDO et la base de
+                            données <strong>workshop_api_biznutz</strong>
+                        </li>
+                    </ul>
+                    <p class="alert-warning">
+                        Important : TAC devra bien entrer les informations de sa
+                        base de données dans ce fichier mais TIC pourra laisser
+                        les informations telles quelles.
+                    </p>
+                    <ul>
+                        <li>
+                            Lancer la commande
+                            <code class="language-plaintext highlighter-rouge"
+                                >php migration.php</code
+                            >
+                        </li>
+                        <li>
+                            Enfin, démarrer le serveur PHP
+                            <div class="language-bash highlighter-rouge">
+                                <div class="highlight">
+                                    <pre
+                                        class="highlight"
+                                    ><code>php <span class="nt">-S</span> localhost:8000 <span class="nt">-t</span> public
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="tic">
+                    <h2 id="-tic">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >👀 Tic</font
+                            ></font
+                        >
+                    </h2>
+                    <p>
+                        Sois attentif à ce que fait <strong>Tac</strong> et
+                        aide-le si besoin.
+                    </p>
+                </section>
+
+                <section class="tac">
+                    <h2 id="tac">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >Tac</font
+                            ></font
+                        >
+                    </h2>
+                    <h3 id="création-de-la-table-nut-en-base-de-données">
+                        Création de la table <em>nut</em> en base de données
+                    </h3>
+                    <p>
+                        Tac enregistre l’état des stocks dans sa base de données
+                        <strong>workshop_api_biznutz</strong>.
+                    </p>
+                    <p class="alert-info">
+                        Pour effectuer les deux points suivants, tu peux
+                        utiliser ton terminal ou écrire les requêtes dans le
+                        fichier <strong>database.sql</strong>. Il suffira alors
+                        de lancer la commande
+                        <code class="language-plaintext highlighter-rouge"
+                            >php migration.php</code
+                        >
+                        pour les exécuter.
+                    </p>
+                    <ol>
+                        <li>
+                            Crée une table <strong>nut</strong> avec les champs
+                            suivants :
+                            <ul>
+                                <li>
+                                    <strong
+                                        ><font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >id</font
+                                            ></font
+                                        ></strong
+                                    ><font style="vertical-align: inherit"
+                                        ><font style="vertical-align: inherit">
+                                            : INT AUTO_INCREMENT CLÉ
+                                            PRIMAIRE</font
+                                        ></font
+                                    >
+                                </li>
+                                <li>
+                                    <strong
+                                        ><font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >nom</font
+                                            ></font
+                                        ></strong
+                                    ><font style="vertical-align: inherit"
+                                        ><font style="vertical-align: inherit">
+                                            : VARCHAR(64) NON NULL</font
+                                        ></font
+                                    >
+                                </li>
+                                <li>
+                                    <strong
+                                        ><font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >stock</font
+                                            ></font
+                                        ></strong
+                                    ><font style="vertical-align: inherit"
+                                        ><font style="vertical-align: inherit">
+                                            : INT NON NULL PAR DÉFAUT 0</font
+                                        ></font
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Remplis cette table
+                            <strong><em>nut</em></strong> avec quelques données,
+                            par exemple :
+                        </li>
+                    </ol>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >nom</font
+                                            ></font
+                                        >
+                                    </th>
+                                    <th style="text-align: center">
+                                        <font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >action</font
+                                            ></font
+                                        >
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>noix</td>
+                                    <td style="text-align: center">
+                                        <font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >150</font
+                                            ></font
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>noisette</td>
+                                    <td style="text-align: center">
+                                        <font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >180</font
+                                            ></font
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pistache</td>
+                                    <td style="text-align: center">
+                                        <font style="vertical-align: inherit"
+                                            ><font
+                                                style="vertical-align: inherit"
+                                                >100</font
+                                            ></font
+                                        >
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 id="création-du-manager">Création du Manager</h3>
+                    <p>
+                        Tac a besoin de récupérer la liste des stocks depuis la
+                        base afin de, plus tard, pouvoir l’envoyer à Tic.
+                    </p>
+                    <ol>
+                        <li>
+                            Crée un nouveau manager <em>NutManager</em> qui sera
+                            lié à ta table <em>nut</em>.
+                        </li>
+                        <li>
+                            Pense à étendre la classe
+                            <em>AbstractManager</em> et à ajouter la constante
+                            <strong>TABLE</strong>.
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="tic">
+                    <h2 id="tic">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >Tic</font
+                            ></font
+                        >
+                    </h2>
+                    <h3 id="aide-tac-à-créer-son-controller">
+                        Aide Tac à créer son controller
+                    </h3>
+                    <p>
+                        Pour que tu puisses récupérer la liste des stocks, il va
+                        falloir que l’API de <strong>Tac</strong> te retourne
+                        ces données.
+                    </p>
+                    <p>
+                        À la différence d’une réponse HTTP standard, celle-ci ne
+                        retournera pas du code HTML, mais un objet JSON converti
+                        en <em>string</em> qui contiendra les stocks.<br />
+                        Jette un oeil à la fonction
+                        <a
+                            href="https://www.php.net/manual/en/function.json-encode.php"
+                            >json_encode</a
+                        >
+                        et aide <strong>Tac</strong> à réaliser cette tâche.
+                    </p>
+                </section>
+
+                <section class="tac">
+                    <h2 id="tac-1">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >Tac</font
+                            ></font
+                        >
+                    </h2>
+                    <h3 id="prépare-le-simple-mvc-en-tant-quapi">
+                        Prépare le simple-MVC en tant qu’API
+                    </h3>
+                    <p>
+                        Pour indiquer lors de la communication client / serveur
+                        le type de contenu qui sera envoyé, il faut ajouter des
+                        informations dans les headers.<br />
+                        Comme l’application de TAC sera une API, il faut
+                        indiquer que ce sera du JSON qui transitera et autoriser
+                        les requêtes HTTP vers l’API.<br />
+                        Afin de ne pas modifier le Framework SimpleMVC
+                        directement, tu vas créer un nouveau Contrôleur abstrait
+                        dans un fichier
+                        <em>src/Controller/AbstractAPIController.php</em>.<br />
+                        Ajoute le code suivant dans ton fichier :
+                    </p>
+                    <div class="language-php highlighter-rouge">
+                        <div class="highlight">
+                            <pre
+                                class="highlight"
+                            ><code><span class="cp">&lt;?php</span><font></font>
+<font></font>
+<span class="kn">namespace</span> <span class="nn">App\Controller</span><span class="p">;</span><font></font>
+<font></font>
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">AbstractAPIController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/json'</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Origin: \*"</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Methods: POST,GET,PUT,DELETE, OPTIONS"</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Access-Control-Allow-Headers: Authorization, Origin, X-Requested-With, Content-Type, Accept"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+                        </div>
+                    </div>
+                    <h3 id="création-du-controller">Création du Controller</h3>
+                    <ol>
+                        <li>
+                            Crée un nouveau controller <em>NutController</em>.
+                        </li>
+                        <li>
+                            Plutôt qu’étendre <em>AbstractController</em>, ce
+                            contrôleur devra étendre
+                            <em>AbstractAPIController</em>.
+                        </li>
+                        <li>
+                            Crée une méthode <em>index()</em> dans ce
+                            <em>NutController</em>.
+                        </li>
+                        <li>
+                            Dans cette méthode, récupère la liste des stocks à
+                            l’aide de ton <em>NutManager</em> et fait en sorte
+                            qu’elle retourne cette liste sous forme de string
+                            contenant du JSON. (<strong>Tic</strong> va t’aider
+                            à réaliser cette partie).
+                        </li>
+                        <li>
+                            Ajoute au fichier <strong>src/routes.php</strong> la
+                            route
+                            <code class="language-plaintext highlighter-rouge"
+                                >nuts</code
+                            >
+                            qui fera référence à ce <em>NutController</em> et sa
+                            méthode <em>index()</em>.
+                        </li>
+                        <li>
+                            Teste ton code en te rendant à l’URL
+                            <a href="http://localhost:8000/nuts"
+                                >http://localhost:8000/nuts</a
+                            >.<br />
+                            Tu devrais alors voir du texte correspondant à du
+                            JSON avec tes données de stocks à l’intérieur.<br />
+                            Par exemple :
+                            <div class="language-json highlighter-rouge">
+                                <div class="highlight">
+                                    <pre
+                                        class="highlight"
+                                    ><code><span class="p">[{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"noix"</span><span class="p">,</span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"150"</span><span class="p">},{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"noisette"</span><span class="p">,</span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"180"</span><span class="p">},{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"pistache"</span><span class="p">,</span><span class="nl">"stock"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">}]</span><span class="w">
+</span></code></pre>
+                                </div>
+                            </div>
+                            <p>
+                                Selon ton navigateur, le json peut même être
+                                joliement mis en forme pour plus de lisibilité.
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="no-background">
+                    <h1 id="tic--tac">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >Tic et Tac</font
+                            ></font
+                        >
+                    </h1>
+                    <p>
+                        Pour continuer, il faut maintenant que le serveur de Tac
+                        soit accessible depuis un autre ordinateur.<br />
+                        Il est possible de le faire en étant sur le même réseau
+                        wifi et en indiquant l’adresse ip locale en lançant le
+                        serveur. Deux possibilités s’offrent à vous.
+                    </p>
+                    <h3 id="vous-êtes-sur-le-même-réseau-wifi">
+                        Vous êtes sur le même réseau WIFI
+                    </h3>
+                    <p>
+                        Au démarrage du serveur PHP, Tac peut indiquer
+                        <code class="language-plaintext highlighter-rouge"
+                            >0.0.0.0</code
+                        >
+                        à la place de
+                        <code class="language-plaintext highlighter-rouge"
+                            >localhost</code
+                        >. La commande complète devient ainsi :
+                    </p>
+                    <div class="language-bash highlighter-rouge">
+                        <div class="highlight">
+                            <pre
+                                class="highlight"
+                            ><code>php <span class="nt">-S</span> 0.0.0.0:8000 <span class="nt">-t</span> public
+</code></pre>
+                        </div>
+                    </div>
+                    <p>
+                        Cela a pour effet d’ouvrir la connexion au serveur aux
+                        autres utilisateurs qui se trouvent sur le même réseau
+                        et grâce à l’IP locale de Tac sur ce même réseau.<br />
+                        Pour connaître cette adresse IP, Tac doit se rendre dans
+                        les paramètres réseaux de son OS. Elle ressemble très
+                        souvent à une suite de nombre et de chiffres séparés par
+                        des points comme ceci : <strong>192.168.0.11</strong>.
+                        Cette adresse IP est d’ordinaire attribuée
+                        automatiquement par le router.<br />
+                        Il suffit ensuite de se rendre avec le navigateur à
+                        l’adresse
+                        <a href="http://192.168.0.11:8000/"
+                            >http://192.168.0.11:8000</a
+                        >
+                        pour se connecter au <em>localhost</em> de l’utilisateur
+                        distant.
+                    </p>
+                    <h3 id="vous-nêtes-pas-sur-le-même-réseau">
+                        Vous n’êtes pas sur le même réseau
+                    </h3>
+                    <p>
+                        Il existe des solutions en ligne permettant de créer des
+                        tunnels de connexion vers le port d’une machine et au
+                        travers de DNS. C’est le cas de
+                        <a href="https://ngrok.com/">Ngrok</a>,
+                        <a href="https://tunnelto.dev/">Tunnelto</a> ou encore
+                        <a href="http://localhost.run/">Localhost.run</a>. Nous
+                        utiliserons ce dernier qui est très facile à prendre en
+                        main et ne nécessite aucune configuration particulière
+                        dans une utilisation limitée. Pour ouvrir les connexions
+                        entrantes sur le port 8000 de ta machine, lance la
+                        commande suivante :
+                    </p>
+                    <div class="language-bash highlighter-rouge">
+                        <div class="highlight">
+                            <pre
+                                class="highlight"
+                            ><code>ssh <span class="nt">-R</span> 80:localhost:8000 nokey@localhost.run
+</code></pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ton terminal te donne en retour une adresse du type
+                        <a href="https://f4864e45215444.lhr.life/"
+                            >https://f4864e45215444.lhr.life</a
+                        >. Tu n’as plus qu’à communiquer cette adresse à Tic. Et
+                        voilà !
+                    </p>
+                </section>
+
+                <section class="tic">
+                    <h2 id="accède-à-lapi-de-tac">Accède à l’API de Tac</h2>
+                    <p>
+                        <strong>Tic</strong> peut maintenant, avec un
+                        navigateur, tenter d’afficher la route
+                        <strong>/nuts</strong> de <strong>Tac</strong> pour
+                        vérifier que tout fonctionne via l’URL
+                        <code class="language-plaintext highlighter-rouge"
+                            >https://xxxxxxx.lhr.life/nuts</code
+                        >
+                        ou
+                        <code class="language-plaintext highlighter-rouge"
+                            >http://xxx.xx.xx.xx./nuts</code
+                        >
+                        selon la méthode employée (remplacer les
+                        <code class="language-plaintext highlighter-rouge"
+                            >xxx</code
+                        >
+                        par les valeurs précédemment obtenues).
+                    </p>
+                </section>
+
+                <section class="tac">
+                    <h2 id="surveille-ton-serveur">Surveille ton serveur</h2>
+                    <p>
+                        <strong>Tac</strong> jette un œil à son terminal pour
+                        voir ce qui se passe sur son serveur. Il constate qu’il
+                        a bien un
+                        <code class="language-plaintext highlighter-rouge"
+                            >[200]: GET /nuts</code
+                        >.
+                    </p>
+                </section>
+
+                <section class="tic">
+                    <h2 id="récupération-des-stocks">
+                        Récupération des stocks
+                    </h2>
+                    <p>
+                        <strong>Tic</strong> veut maintenant récupérer la liste
+                        des stocks, seulement voilà, la base de données est chez
+                        <strong>Tac</strong>. Il va donc falloir récupérer la
+                        liste en faisant appel à la route
+                        <strong>/nuts</strong> de <strong>Tac</strong>.
+                    </p>
+                    <ol>
+                        <li>
+                            Crée un nouveau manager <em>StockManager</em>.<br />
+                            Ce manager <strong>ne devra pas</strong> hériter de
+                            <em>AbstractManager</em> car tu ne te connecteras
+                            pas à ta base de données. Tu n’auras donc pas besoin
+                            de déclarer la constante TABLE.
+                        </li>
+                        <li>
+                            Crée une méthode <em>getAll()</em> dans ce manager.
+                        </li>
+                        <li>
+                            <strong>Grâce aux instructions de Tac</strong>,
+                            utilise la bibliothèque <em>HttpClient</em> et sa
+                            méthode static
+                            <code class="language-plaintext highlighter-rouge"
+                                >create()</code
+                            >
+                            et fais appel à l’URL de Tac (<code
+                                class="language-plaintext highlighter-rouge"
+                                >https://xxxxxxx.lhr.life/nuts</code
+                            >
+                            ou
+                            <code class="language-plaintext highlighter-rouge"
+                                >http://xxx.xx.xx.xx./nuts</code
+                            >) pour récupérer les stocks.
+                        </li>
+                        <li>
+                            Ta méthode doit ensuite retourner la liste des
+                            stocks sous forme de tableau PHP (regarde du côté de
+                            la méthode <em>toArray()</em> de l’objet
+                            <em>Response</em> de HttpClient dans la
+                            documentation).
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="tac">
+                    <h2 id="-aide-tic-à-récupérer-les-stocks">
+                        👀 Aide Tic à récupérer les stocks
+                    </h2>
+                    <p>
+                        Sois attentif à ce que fait 🐿&nbsp;<strong>Tic</strong>
+                        et aide-le si besoin en t’appuyant sur les informations
+                        suivantes.
+                    </p>
+                    <p>
+                        <strong>http-client</strong> est une bibliothèque
+                        permettant de faire des requêtes http vers une API
+                        externe.<br />
+                        Cette bibliothèque est développée par
+                        <strong>Symfony</strong> mais comme souvent, elle peut
+                        être utilisée en standalone, c’est à dire en dehors du
+                        framework.<br />
+                        Pour l’installer dans un projet, il suffit d’utiliser
+                        composer et la commande :
+                    </p>
+                    <div class="language-php highlighter-rouge">
+                        <div class="highlight">
+                            <pre
+                                class="highlight"
+                            ><code><span class="n">composer</span> <span class="k">require</span> <span class="n">symfony</span><span class="o">/</span><span class="n">http</span><span class="o">-</span><span class="n">client</span>
+</code></pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ensuite, la
+                        <a
+                            href="https://symfony.com/doc/current/http_client.html#basic-usage"
+                            >documentation</a
+                        >
+                        explique comment l’utiliser.
+                    </p>
+                    <p class="alert-info">
+                        Dans l’exemple de code, clique bien sur l’onglet
+                        <code class="language-plaintext highlighter-rouge"
+                            >Standalone Use</code
+                        >
+                        pour voir un exemple d’utilisation en dehors de Symfony.
+                    </p>
+                </section>
+
+                <section class="tic">
+                    <h2 id="affichage-des-stocks">Affichage des stocks</h2>
+                    <p>
+                        Maintenant que tu as récupéré les stocks depuis
+                        l’application de <strong>Tac</strong>, il faut les
+                        afficher
+                    </p>
+                    <ol>
+                        <li>
+                            Modifie la méthode <em>index()</em> du
+                            <em>HomeController</em> afin qu’elle récupère les
+                            stocks à l’aide de ton <em>StockManager</em> et sa
+                            méthode <em>getAll()</em>.
+                        </li>
+                        <li>
+                            Passe la liste des stocks en contexte à ta vue
+                            <em>Home/index.html.twig</em>, puis affiche les sous
+                            forme de tableau HTML.
+                        </li>
+                        <li>
+                            Lance un webserver local, si ce n’est pas déjà fait,
+                            et vérifie que la liste des stocks s’affiche
+                            correctement sur
+                            <a href="http://localhost:8000/"
+                                >http://localhost:8000/</a
+                            >
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="tac">
+                    <h2 id="-tac">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >👀 Tac</font
+                            ></font
+                        >
+                    </h2>
+                    <p>
+                        Sois attentif à ce que fait <strong>Tic</strong> et
+                        aide-le si besoin.
+                    </p>
+                </section>
+
+                <section class="no-background">
+                    <h1 id="-bravo-">
+                        <font style="vertical-align: inherit"
+                            ><font style="vertical-align: inherit"
+                                >👏 Bravo !</font
+                            ></font
+                        >
+                    </h1>
+                    <p class="text-center">
+                        Vous venez de réaliser votre première API et savez
+                        désormais comment la “consommer”.
+                    </p>
+                    <p class="text-center">
+                        <img src="assets/img/giphy-tic-tac.gif" alt="" />
+                    </p>
+                </section>
+
+                <section class="no-background">
+                    <h1 id="-bonus--aller-plus-loin">
+                        🌰 BONUS : aller plus loin…
+                    </h1>
+                    <p>
+                        Tic souhaite maintenant proposer une fonctionnalité
+                        d’achat sur son site. Lorsqu’une personne achète une
+                        noix il faudra donc envoyer cette information à l’API de
+                        Tac pour qu’elle puisse mettre à jour le stock en base
+                        de données.
+                    </p>
+                </section>
+
+                <section class="tic">
+                    <h2 id="--aide-tac-à-mettre-à-jour-ses-stocks">
+                        👀 Aide Tac à mettre à jour ses stocks
+                    </h2>
+                    <p>
+                        Sois attentif à ce que fait 🐿 Tac et aide-le si besoin.
+                    </p>
+                </section>
+
+                <section class="tac">
+                    <h2 id="mise-à-jour-des-stocks">Mise à jour des stocks</h2>
+                    <p>
+                        Crée une méthode
+                        <code class="language-plaintext highlighter-rouge"
+                            >decrementStock(int $id)</code
+                        >
+                        dans ton <em>NutManager</em>. Cette méthode exécutera
+                        une requête SQL qui devra décrémenter la quantité en
+                        stock de l’item dont l’ID est passé en paramètre.
+                    </p>
+                    <ol>
+                        <li>
+                            Crée une méthode
+                            <code class="language-plaintext highlighter-rouge"
+                                >buy()</code
+                            >
+                            dans ton <em>NutController</em>.
+                        </li>
+                        <li>
+                            Cette méthode sera associée à la route
+                            <strong>/nuts/buy</strong>. Ajoute cette entrée à la
+                            liste des routes du fichier
+                            <strong>src/routes.php</strong>. C’est cette méthode
+                            qui sera appelée en POST par Tic lorsqu’un
+                            utilisateur décidera d’acheter une noisette. Vérifie
+                            que la méthode HTTP est bien POST :
+                            <div class="language-php highlighter-rouge">
+                                <div class="highlight">
+                                    <pre
+                                        class="highlight"
+                                    ><code><span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s2">"POST"</span><span class="p">)</span> <span class="p">{</span> 
+ <span class="c1">//...</span>
+<span class="p">}</span> 
+</code></pre>
+                                </div>
+                            </div>
+                            <p>
+                                Puis, fais appel à la méthode
+                                <code
+                                    class="language-plaintext highlighter-rouge"
+                                    >decrementStock($id)</code
+                                >
+                                de ton <em>NutManager</em> pour mettre à jour le
+                                stock de l’item dont l’ID est passé en
+                                paramètre.
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="tic">
+                    <h2 id="ajout-de-la-fonctionnalité-dachat">
+                        Ajout de la fonctionnalité d’achat
+                    </h2>
+                    <ol>
+                        <li>
+                            Ajoute un bouton-lien “acheter” sur chaque ligne de
+                            ton tableau HTML qui aura pour <em>href</em>
+                            <code class="language-plaintext highlighter-rouge"
+                                >/buy?id={id}</code
+                            >
+                            (“id” correspondant à l’ID de l’item).
+                        </li>
+                        <li>
+                            Si le stock est à zéro, afficher “Stock épuisé” au
+                            lieu du bouton “acheter”.
+                        </li>
+                        <li>
+                            Crée une méthode
+                            <code class="language-plaintext highlighter-rouge"
+                                >buy(int $id)</code
+                            >
+                            dans ton <em>HomeController</em> (c’est cette
+                            méthode qui sera appelée au clic sur le bouton
+                            “Acheter”.
+                        </li>
+                        <li>
+                            Pense à ajouter au tableau de
+                            <strong>src/routes.php</strong> la route
+                            <em>buy</em> faisant référence à cette méthode.<br />
+                            ⚠️ Attention, elle reçoit un paramètre
+                            <code class="language-plaintext highlighter-rouge"
+                                >$id</code
+                            >
+                            issu d’une requête
+                            <code class="language-plaintext highlighter-rouge"
+                                >$_GET</code
+                            >.
+                        </li>
+                        <li>
+                            Crée une méthode
+                            <code class="language-plaintext highlighter-rouge"
+                                >buy(int $id)</code
+                            >
+                            dans ton <em>StockManager</em>.<br />
+                            Grâce à <em>HttpClient</em>, cette méthode devra
+                            faire un
+                            <code class="language-plaintext highlighter-rouge"
+                                >POST</code
+                            >
+                            sur la route de l’API de Tac :
+                            <code class="language-plaintext highlighter-rouge"
+                                >http://xxx.xxx.xx.xxx/nuts/buy</code
+                            >
+                            avec l’<code
+                                class="language-plaintext highlighter-rouge"
+                                >$id</code
+                            >
+                            en paramètre.<br />
+                            La
+                            <a
+                                href="https://symfony.com/doc/current/http_client.html#uploading-data"
+                                >section “envoi de données”</a
+                            >
+                            de la documentation t’aidera à comprendre comment
+                            structurer le corps de la requête
+                            <code class="language-plaintext highlighter-rouge"
+                                >POST</code
+                            >.
+                        </li>
+                        <li>
+                            Dans la méthode
+                            <code class="language-plaintext highlighter-rouge"
+                                >buy</code
+                            >
+                            de ton <em>HomeController</em> :
+                            <ul>
+                                <li>
+                                    Fais appel à la méthode
+                                    <code
+                                        class="language-plaintext highlighter-rouge"
+                                        >buy</code
+                                    >
+                                    de ton <em>StockManager</em>.
+                                </li>
+                                <li>
+                                    Redirige ensuite l’utilisateur sur
+                                    <code
+                                        class="language-plaintext highlighter-rouge"
+                                        >/</code
+                                    >.<br />
+                                    Si Tac a bien bossé, le stock de l’item en
+                                    question sera alors décrémenté.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="tac">
+                    <h2
+                        id="-aide-tic-à-ajouter-la-fonctionalité-dachat-sur-son-site"
+                    >
+                        👀 Aide Tic à ajouter la fonctionalité d’achat sur son
+                        site
+                    </h2>
+                    <p>
+                        Sois attentif à ce que fait <strong>Tic</strong> et
+                        aide-le si besoin.
+                    </p>
+                </section>
+
+                <section class="no-background">
+                    <h1 id="à-suivre-">À suivre 🌰🌰🌰</h1>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>
